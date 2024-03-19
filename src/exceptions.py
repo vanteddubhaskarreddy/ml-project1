@@ -2,6 +2,11 @@ import sys
 import logging
 import logger
 
+# sys module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
+# sys.exc_info() function returns a tuple of three values that give information about the exception that is currently being handled.
+# logging module defines functions and classes which implement a flexible event logging system for applications and libraries.
+# logger module is a custom module which is used to log the error message in the log file.
+
 def error_message_detail(error, error_detail:sys):
     _,_,exc_tb = error_detail.exc_info()
     file_name = exc_tb.tb_frame.f_code.co_filename
@@ -23,7 +28,7 @@ class CustomException(Exception):
 
     #This class will create a custom exception with the error message and error detail inherited from the Exception class.
     #The __init__ function will initialize the error message and error detail.
-    #The super.__init__(error_message) will call the parent class constructor and initialize the error message.
+    #The super().__init__(error_message) will call the parent class constructor and initialize the error message.
     #super().__init__(error_message) This line calls the constructor of the base class (Exception). This is necessary because CustomException is a subclass of Exception, and we want to make sure that any initialization that Exception does is also done for CustomException. The error_message is passed to the Exception constructor, which uses it to set the error message for the exception.
     #The error_message_detail function will return the error message with the file name and line number where the error occured.
     #The __str__ function will return the error message.

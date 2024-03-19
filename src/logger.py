@@ -4,8 +4,8 @@ from datetime import datetime
 
 LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 #This line will create a log file with the current date and time.
-#datetime.now().shrftime('%m_%d_%Y_%H_%M_%S') will get the current date and time and convert it into the string format.
-#f"{datetime.now().shrftime('%m_%d_%Y_%H_%M_%S')}.log" will create a log file with the current date and time.
+#datetime.now().strftime('%m_%d_%Y_%H_%M_%S') will get the current date and time and convert it into the string format.
+#f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log" will create a log file with the current date and time.
 
 logs_path = os.path.join(os.getcwd(), 'logs', LOG_FILE)
 #This line will create a log file with the current date and time in the logs folder.
