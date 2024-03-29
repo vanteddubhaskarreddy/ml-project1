@@ -1,6 +1,6 @@
 import sys
 import logging
-import logger
+from src.logger import logging
 
 # sys module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter.
 # sys.exc_info() function returns a tuple of three values that give information about the exception that is currently being handled.
