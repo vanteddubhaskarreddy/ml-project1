@@ -59,84 +59,25 @@ class ModelTrainer:
             # AdaBoost Regressor: This is also similar to XGBRegressor but it gives more weight to the data points that are hard to predict. It's used when you want to focus on the difficult data points.
             
 
-            '''
-            params = {
-                "Decision Tree": {
-                    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-                    # 'splitter': ['best', 'random'],
-                    'max_features': ['sqrt', 'log2'],
-                },
-                # Decision Tree
-                # criterion: This is the function used to measure the quality of a split in the decision tree. For example, 'squared_error' means that the split that minimizes the sum of squared errors (differences between actual and predicted values) is chosen.
-                # max_features: This is the number of features to consider when looking for the best split. 'sqrt' means the square root of the total number of features, and 'log2' means the base-2 logarithm of the total number of features.
-                'Random Forest': {
-                    # 'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-                    # 'max_features': ['sqrt', 'log2', 'None'],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
-                },
-                # Random Forest
-                # n_estimators: This is the number of trees in the forest. For example, if n_estimators is 8, then the random forest will consist of 8 different decision trees.
-                'Gradient Boosting': {
-                    # 'loss': ['squared_error', 'huber', 'absolute_error', 'quantile'],
-                    'learning_rate': [.1, .01, .05, .001],
-                    'subsample': [.6, .7, .75, .8, .85, .9],
-                    # 'criteria': ['friedman_mse', 'squared_error'],
-                    # 'max_features': ['auto', 'sqrt', 'log2'],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
-                },
-                # Gradient Boosting
-                # learning_rate: This is a parameter that affects how quickly the model learns. A smaller learning rate means the model learns slowly, requiring more training iterations but often resulting in a better model.
-                # subsample: This is the fraction of samples to be used for fitting the individual base learners. For example, if subsample is 0.6, then each base learner (decision tree) is trained on 60% of the total training samples, chosen randomly.
-                # n_estimators: Similar to the Random Forest, this is the number of stages of boosting, i.e., the number of individual models to sequentially train.
-                'Linear regression': {},
-                'K Neighbours Regressor': {
-                    'n_neighbors': [5, 7, 9, 11],
-                    'weights': ['uniform', 'distance'],
-                    'algorithm': ['ball_tree', 'kd_tree', 'brute'],
-                },
-                # K Neighbours Regressor
-                # n_neighbors: This is the number of neighbors to use for prediction. For example, if n_neighbors is 5, the model will look at the 5 closest data points to a given point to predict its value.
-                # weights: This determines how much importance or "weight" is given to each neighbor in prediction. 'uniform' means all neighbors have equal weight, while 'distance' means closer neighbors have more weight.
-                # algorithm: This is the algorithm used to compute the nearest neighbors. 'ball_tree', 'kd_tree', and 'brute' are different methods of calculating which data points are "neighbors".
-                'XGBRegressor': {
-                    'learning_rate': [.1, .01, .05, .001],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
-                },
-                # XGBRegressor
-                # learning_rate: This is a parameter that affects how quickly the model learns. A smaller learning rate means the model learns slowly, requiring more training iterations but often resulting in a better model.
-                # n_estimators: This is the number of stages of boosting, i.e., the number of individual models to sequentially train.
-                'CatBoosting Regressor': {
-                    'depth' : [6, 8 ,10],
-                    'learning_rate': [.1, .01, .05, .001],
-                    'iterations': [30, 50, 100],
-                },
-                # CatBoosting Regressor
-                # depth: This is the maximum depth of the trees in the model. A tree of depth 6 will have up to 6 layers of decisions.
-                # learning_rate: Similar to XGBRegressor, this affects how quickly the model learns.
-                # iterations: This is the number of trees to be built, similar to n_estimators in the previous models.
-                'AdaBoost Regressor': {
-                    'learning_rate': [.1, .01, .05, .001],
-                    'loss': ['linear', 'square', 'exponential'],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
-                }
-                # AdaBoost Regressor
-                # learning_rate: Again, this affects how quickly the model learns.
-                # loss: This is the loss function to use when updating the weights. 'linear', 'square', and 'exponential' are different ways of calculating the difference between the predicted and actual values.
-                # n_estimators: This is the maximum number of estimators at which boosting is terminated. In other words, it's the maximum number of models to train sequentially.
-            }
-            '''
             params={
                 "Decision Tree": {
                     'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
                     # 'splitter':['best','random'],
                     # 'max_features':['sqrt','log2'],
                 },
+                # Decision Tree
+                # criterion: This is the function used to measure the quality of a split in the decision tree. For example, 'squared_error' means that the split that minimizes the sum of squared errors (differences between actual and predicted values) is chosen.
+                # max_features: This is the number of features to consider when looking for the best split. 'sqrt' means the square root of the total number of features, and 'log2' means the base-2 logarithm of the total number of features.
+
                 "Random Forest":{
                     # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
                 
                     # 'max_features':['sqrt','log2',None],
                     'n_estimators': [8,16,32,64,128,256]
                 },
+                # Random Forest
+                # n_estimators: This is the number of trees in the forest. For example, if n_estimators is 8, then the random forest will consist of 8 different decision trees.
+
                 "Gradient Boosting":{
                     # 'loss':['squared_error', 'huber', 'absolute_error', 'quantile'],
                     'learning_rate':[.1,.01,.05,.001],
@@ -145,21 +86,50 @@ class ModelTrainer:
                     # 'max_features':['auto','sqrt','log2'],
                     'n_estimators': [8,16,32,64,128,256]
                 },
+                # Gradient Boosting
+                # learning_rate: This is a parameter that affects how quickly the model learns. A smaller learning rate means the model learns slowly, requiring more training iterations but often resulting in a better model.
+                # subsample: This is the fraction of samples to be used for fitting the individual base learners. For example, if subsample is 0.6, then each base learner (decision tree) is trained on 60% of the total training samples, chosen randomly.
+                # n_estimators: Similar to the Random Forest, this is the number of stages of boosting, i.e., the number of individual models to sequentially train.
+
                 "Linear Regression":{},
+
+                "K Neighbours Regressor": {
+                    'n_neighbors': [5, 7, 9, 11],
+                    'weights': ['uniform', 'distance'],
+                    'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+                },
+                # K Neighbours Regressor
+                # n_neighbors: This is the number of neighbors to use for prediction. For example, if n_neighbors is 5, the model will look at the 5 closest data points to a given point to predict its value.
+                # weights: This determines how much importance or "weight" is given to each neighbor in prediction. 'uniform' means all neighbors have equal weight, while 'distance' means closer neighbors have more weight.
+                # algorithm: This is the algorithm used to compute the nearest neighbors. 'ball_tree', 'kd_tree', and 'brute' are different methods of calculating which data points are "neighbors".
+
                 "XGBRegressor":{
                     'learning_rate':[.1,.01,.05,.001],
                     'n_estimators': [8,16,32,64,128,256]
                 },
+                # XGBRegressor
+                # learning_rate: This is a parameter that affects how quickly the model learns. A smaller learning rate means the model learns slowly, requiring more training iterations but often resulting in a better model.
+                # n_estimators: This is the number of stages of boosting, i.e., the number of individual models to sequentially train.
+
                 "CatBoosting Regressor":{
                     'depth': [6,8,10],
                     'learning_rate': [0.01, 0.05, 0.1],
                     'iterations': [30, 50, 100]
                 },
+                # CatBoosting Regressor
+                # depth: This is the maximum depth of the trees in the model. A tree of depth 6 will have up to 6 layers of decisions.
+                # learning_rate: Similar to XGBRegressor, this affects how quickly the model learns.
+                # iterations: This is the number of trees to be built, similar to n_estimators in the previous models.
+
                 "AdaBoost Regressor":{
                     'learning_rate':[.1,.01,0.5,.001],
                     # 'loss':['linear','square','exponential'],
                     'n_estimators': [8,16,32,64,128,256]
                 }
+                # AdaBoost Regressor
+                # learning_rate: Again, this affects how quickly the model learns.
+                # loss: This is the loss function to use when updating the weights. 'linear', 'square', and 'exponential' are different ways of calculating the difference between the predicted and actual values.
+                # n_estimators: This is the maximum number of estimators at which boosting is terminated. In other words, it's the maximum number of models to train sequentially.
                 
             }
 
